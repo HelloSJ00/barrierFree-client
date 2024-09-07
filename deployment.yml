@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               protocol: TCP
       imagePullSecrets:
-        - name: my-registry-secret
+        - name: ncp-registry-secret
