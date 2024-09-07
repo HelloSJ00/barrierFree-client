@@ -9,7 +9,7 @@ export default function Home() {
     const fetchData = async () => {
       //Spring Boot API에서 data fetch
       try {
-        const response = await fetch('http://spring-service:8080/api/helo');
+        const response = await fetch('http://spring-service:8080/api/hello');
         const data = await response.json();
         setMessage(data.message);
       } catch (error) {
