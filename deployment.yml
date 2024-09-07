@@ -2,3 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nextjs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-app
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+        tier: frontend
+    spec:
+      containers:
+        - name: nextjs
+          image: contest42-client.kr.ncr.ntruss.com/contest42-client:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+      imagePullSecrets:
+        - name: my-registry-secret
