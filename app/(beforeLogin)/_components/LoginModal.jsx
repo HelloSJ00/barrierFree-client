@@ -1,13 +1,29 @@
 "use client";
 import React from "react";
 import styles from "./loginModal.module.css";
-import { useRouter } from "next/navigation";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
 
 const LoginModal = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
+
   const onClickClose = () => {
     router.back();
   };
+
+  //로그인 시도
+  const onSubmit = async () => {};
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modal}>
@@ -25,7 +41,45 @@ const LoginModal = () => {
             </svg>
           </button>
         </div>
-        <form action="submit"></form>
+        <form onSubmit={onSubmit}>
+          <div className={styles.modalBody}>
+            <div className={styles.inputDiv}>
+              <label className={styles.inputLabel} htmlFor="email">
+                이메일
+              </label>
+              <input
+                id="email"
+                className={styles.input}
+                value={email}
+                onChange={onChangeEmail}
+                type="text"
+                placeholder=""
+              />
+            </div>
+            <div className={styles.inputDiv}>
+              <label className={styles.inputLabel} htmlFor="password">
+                비밀번호
+              </label>
+              <input
+                id="password"
+                className={styles.input}
+                value={password}
+                onChange={onChangePassword}
+                type="password"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div className={styles.message}>{message}</div>
+          <div className={styles.modalFooter}>
+            <button
+              className={styles.actionButton}
+              disabled={!email && !password}
+            >
+              로그인하기
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
