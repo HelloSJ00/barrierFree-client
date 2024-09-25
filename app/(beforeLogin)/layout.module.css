@@ -5,3 +5,9 @@
   width: 100dvw;
   height: 100dvh;
 }
+
+.header {
+  display: flex;
+  position: fixed;
+  width: 800px;
+}

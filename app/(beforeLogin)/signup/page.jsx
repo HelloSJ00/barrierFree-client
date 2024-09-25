@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./page.module.css";
+import SignupForm from "../_components/SignupForm";
 
-const page = () => {
+const Signup = () => {
   return (
     <main className={styles.container}>
-      <div>회원가입 페이지</div>
+      <SignupForm />
     </main>
   );
 };
 
-export default page;
+export default Signup;
