@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import styles from "./main.module.css";
+import Button from "@mui/material/Button";
+import BasicButton from "./common/BasicButton";
 
 const Main = () => {
   return (
@@ -12,13 +13,9 @@ const Main = () => {
       </div>
       <div className={styles.rightSection}>
         <h2>지금 바로 이용하세요</h2>
-        <Link href="/signup" className={styles.signup}>
-          회원가입
-        </Link>
+        <BasicButton component="a" href="/signup" text="회원가입" />
         <h2>이미 가입하셨나요 ?</h2>
-        <Link href="/login" className={styles.signin}>
-          로그인
-        </Link>
+        <BasicButton component="a" href="/login" text="로그인" />
       </div>
     </div>
   );

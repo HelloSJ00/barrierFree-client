@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./loginModal.module.css";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+import BasicButton from "./common/BasicButton";
+import { TextField, Button, Box, Typography } from "@mui/material";
 
 const LoginModal = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +17,18 @@ const LoginModal = () => {
   };
 
   //로그인 시도
-  const onSubmit = async () => {};
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (!email || !password) {
+      setMessage("이메일과 비밀번호를 입력해주세요.");
+      return;
+    }
+
+    // 여기서 로그인 로직을 추가할 수 있습니다.
+    console.log("이메일:", email);
+    console.log("비밀번호:", password);
+    setMessage("로그인 성공!"); // 임시로 성공 메시지 출력
+  };
 
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -41,45 +54,51 @@ const LoginModal = () => {
             </svg>
           </button>
         </div>
-        <form onSubmit={onSubmit}>
-          <div className={styles.modalBody}>
-            <div className={styles.inputDiv}>
-              <label className={styles.inputLabel} htmlFor="email">
-                이메일
-              </label>
-              <input
-                id="email"
-                className={styles.input}
-                value={email}
-                onChange={onChangeEmail}
-                type="text"
-                placeholder=""
-              />
-            </div>
-            <div className={styles.inputDiv}>
-              <label className={styles.inputLabel} htmlFor="password">
-                비밀번호
-              </label>
-              <input
-                id="password"
-                className={styles.input}
-                value={password}
-                onChange={onChangePassword}
-                type="password"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div className={styles.message}>{message}</div>
+        <Box
+          component="form"
+          onSubmit={onSubmit}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            maxWidth: "100%",
+            margin: "0 auto",
+            padding: 4,
+            borderRadius: "8px",
+          }}
+        >
+          <Typography variant="h4" component="h1" gutterBottom>
+            로그인
+          </Typography>
+          <TextField
+            label="이메일"
+            type="email"
+            value={email}
+            onChange={onChangeEmail}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="비밀번호"
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+          />
+          {message && (
+            <Typography color="error" variant="body2" sx={{ marginTop: 2 }}>
+              {message}
+            </Typography>
+          )}
           <div className={styles.modalFooter}>
-            <button
-              className={styles.actionButton}
-              disabled={!email && !password}
-            >
-              로그인하기
-            </button>
+            <BasicButton type="submit" variant="contained" text="로그인하기" />
           </div>
-        </form>
+        </Box>
       </div>
     </div>
   );

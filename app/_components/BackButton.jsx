@@ -6,6 +6,7 @@ const BackButton = () => {
   const router = useRouter();
   const onClickBack = () => {
     router.back();
+    console.log("back");
   };
   return (
     <button onClick={onClickBack} className={styles.backButton}>
