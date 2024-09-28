@@ -2,6 +2,8 @@
 import React from "react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
+import Button from "@mui/material/Button";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar = () => {
   const onClickLogout = () => {};
@@ -25,9 +27,25 @@ const Navbar = () => {
         </Link>
       </div>
       <footer className={styles.footer}>
-        <button onClick={onClickLogout} className={styles.logoutButton}>
+        <Button
+          onClick={onClickLogout}
+          sx={{
+            width: 270,
+            height: 70,
+            backgroundColor: "white",
+            color: "#1b5e20",
+            borderColor: "#1b5e20",
+            fontSize: 20,
+            borderRadius: 50,
+            "&:hover": {
+              backgroundColor: "#c8e6c9",
+            },
+          }}
+          variant="outlined"
+        >
           로그아웃
-        </button>
+          <LogoutIcon sx={12} />
+        </Button>
       </footer>
     </div>
   );
