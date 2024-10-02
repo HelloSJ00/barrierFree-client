@@ -19,15 +19,40 @@ const LoginModal = () => {
   //로그인 시도
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    // 이메일과 비밀번호 입력 확인
     if (!email || !password) {
       setMessage("이메일과 비밀번호를 입력해주세요.");
       return;
     }
 
-    // 여기서 로그인 로직을 추가할 수 있습니다.
-    console.log("이메일:", email);
-    console.log("비밀번호:", password);
-    setMessage("로그인 성공!"); // 임시로 성공 메시지 출력
+    const loginForm = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      // 로그인 API 호출
+      const response = await login(loginForm);
+
+      // 로그인 성공 시 처리
+      if (response.success) {
+        // 서버 응답에 success 필드가 있다고 가정
+        setMessage("로그인 성공!");
+        console.log("이메일:", email);
+        console.log("비밀번호:", password);
+        // 여기에 로그인 성공 후 리다이렉트 또는 세션 관리 코드 추가 가능
+      } else {
+        setMessage(
+          "로그인 실패: " +
+            (response.message || "알 수 없는 오류가 발생했습니다.")
+        );
+      }
+    } catch (error) {
+      // 로그인 중 에러 발생 시 처리
+      console.error("로그인 중 오류 발생:", error);
+      setMessage("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
   };
 
   const onChangeEmail = (event) => {
