@@ -5,6 +5,7 @@ import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import BasicButton from "./common/BasicButton";
 import { TextField, Button, Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 
 const LoginModal = () => {
   const [email, setEmail] = useState("");
@@ -63,8 +64,32 @@ const LoginModal = () => {
   };
 
   return (
-    <div className={styles.modalBackground}>
-      <div className={styles.modal}>
+    <motion.div
+      className={styles.modalBackground}
+      initial={{ opacity: 0 }} // 시작 시 투명도 0
+      animate={{ opacity: 1 }} // 애니메이션으로 투명도 1
+      exit={{ opacity: 0 }} // 닫힐 때 다시 투명도 0
+      transition={{ duration: 0.3 }} // 애니메이션 지속 시간
+      onClick={onClickClose}
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // 배경색 투명도
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <motion.div
+        className={styles.modal}
+        initial={{ scale: 0.5, opacity: 0 }} // 모달 초기 크기와 투명도
+        animate={{ scale: 1, opacity: 1 }} // 모달이 커지는 애니메이션
+        exit={{ scale: 0.5, opacity: 0 }} // 모달이 닫힐 때 애니메이션
+        transition={{ duration: 0.3 }} // 애니메이션 지속 시간
+      >
         <div className={styles.modalHeader}>
           <button className={styles.closeButton} onClick={onClickClose}>
             <svg
@@ -79,6 +104,7 @@ const LoginModal = () => {
             </svg>
           </button>
         </div>
+
         <Box
           component="form"
           onSubmit={onSubmit}
@@ -95,6 +121,7 @@ const LoginModal = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             로그인
           </Typography>
+
           <TextField
             label="이메일"
             type="email"
@@ -105,6 +132,7 @@ const LoginModal = () => {
             margin="normal"
             required
           />
+
           <TextField
             label="비밀번호"
             type="password"
@@ -115,17 +143,19 @@ const LoginModal = () => {
             margin="normal"
             required
           />
+
           {message && (
             <Typography color="error" variant="body2" sx={{ marginTop: 2 }}>
               {message}
             </Typography>
           )}
+
           <div className={styles.modalFooter}>
             <BasicButton type="submit" variant="contained" text="로그인하기" />
           </div>
         </Box>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
