@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./backButton.module.css";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 const BackButton = () => {
   const router = useRouter();
   const onClickBack = () => {
@@ -9,9 +10,15 @@ const BackButton = () => {
     console.log("back");
   };
   return (
-    <button onClick={onClickBack} className={styles.backButton}>
-      ←
-    </button>
+    <motion.div
+      whileHover={{ scale: 1.2 }}
+      transition={{ duration: 0.3 }}
+      style={{ display: "inline-block" }}
+    >
+      <button onClick={onClickBack} className={styles.backButton}>
+        ←
+      </button>
+    </motion.div>
   );
 };
 

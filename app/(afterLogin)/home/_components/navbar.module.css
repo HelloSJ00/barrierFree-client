@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+  background-color: white;
 }
 
 .header {
@@ -40,6 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 .logoutButton {
   width: 270px;
