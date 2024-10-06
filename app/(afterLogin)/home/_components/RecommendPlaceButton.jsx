@@ -18,6 +18,7 @@ const RecommendButton = styled(Button)({
   // border: "none",
   fontSize: "20px",
   zIndex: 200,
+  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // 그림자 효과 추가
   "&:hover": {
     backgroundColor: "#c8e6c9",
   },
