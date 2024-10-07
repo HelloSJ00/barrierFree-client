@@ -4,7 +4,15 @@ import styles from "./recommendCard.module.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import BasicSmallBtn from "./BasicSmallBtn";
+import { useRouter } from "next/navigation";
+import { userAgent } from "next/server";
 const RecommedCard = ({ place, order }) => {
+  const router = useRouter();
+
+  const onClickReviewPage = () => {};
+  const onClickPlaceDetails = () => {};
+  const onClickMoveMap = () => {};
+
   return (
     <div className={styles.box}>
       <section className={styles.infoSection}>
@@ -16,8 +24,9 @@ const RecommedCard = ({ place, order }) => {
           </i>
         </div>
         <div className={styles.btnBox}>
-          <BasicSmallBtn text={"리뷰보기"} />
-          <BasicSmallBtn text={"실시간 정보"} />
+          <BasicSmallBtn text={"리뷰보기"} onClick={onClickReviewPage} />
+          <BasicSmallBtn text={"실시간 정보"} onClick={onClickPlaceDetails} />
+          <BasicSmallBtn text={"장소로 이동"} onClick={onClickMoveMap} />
         </div>
       </section>
       <section className={styles.scoreSection}>

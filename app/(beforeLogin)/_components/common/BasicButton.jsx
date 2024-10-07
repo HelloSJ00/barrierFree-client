@@ -5,11 +5,16 @@ import { motion } from "framer-motion";
 
 const BasicButton = ({ text, ...props }) => {
   return (
+    <motion.div
+      whileHover={{ scale: 1.2 }}
+      transition={{ duration: 0.3 }}
+      style={{ display: "inline-block" }}
+    >
       <Button
         variant="contained"
         sx={{
-          width: 100,
-          height: 30,
+          width: 500,
+          height: 68,
           borderRadius: 16,
           fontSize: 20,
           borderColor: "#388e3c", // 보더 색상 설정
