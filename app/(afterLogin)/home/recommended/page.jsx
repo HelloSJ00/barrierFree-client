@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./bookmark.module.css";
 import BackButton from "@/app/_components/BackButton";
+import styles from "./recommended.module.css";
 import LeftMotionProvider from "../_components/LeftMotionProvider";
 
 const Page = () => {
@@ -10,7 +10,7 @@ const Page = () => {
         <div className={styles.header}>
           <BackButton />
           <div className={styles.headerTextBox}>
-            <span className={styles.headerText}>즐겨찾기</span>
+            <span className={styles.headerText}>추천 장소</span>
           </div>
           <div className={styles.box}></div>
         </div>
