@@ -68,7 +68,9 @@ const Navbar = () => {
                 }}
               >
                 <BookmarksIcon sx={{ fontSize: 24 }} />
-                즐겨찾기
+                <i>
+                  <strong>즐겨찾기</strong>
+                </i>
               </Button>
             </Link>
 
@@ -83,7 +85,9 @@ const Navbar = () => {
                 }}
               >
                 <AccountCircleIcon sx={{ fontSize: 24 }} />
-                계정
+                <i>
+                  <strong>계정</strong>
+                </i>
               </Button>
             </Link>
             <Link href="/home/recommended" passHref>

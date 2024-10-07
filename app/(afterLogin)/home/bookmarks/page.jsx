@@ -3,7 +3,7 @@ import styles from "./bookmark.module.css";
 import BackButton from "@/app/_components/BackButton";
 import LeftMotionProvider from "../_components/LeftMotionProvider";
 
-const Page = () => {
+const Page = async () => {
   return (
     <LeftMotionProvider>
       <div className={styles.container}>
@@ -14,7 +14,7 @@ const Page = () => {
           </div>
           <div className={styles.box}></div>
         </div>
-        <section> </section>
+        <section></section>
       </div>
     </LeftMotionProvider>
   );
