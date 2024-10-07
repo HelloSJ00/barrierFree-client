@@ -119,7 +119,9 @@ const LoginModal = () => {
           }}
         >
           <Typography variant="h4" component="h1" gutterBottom>
-            로그인
+            <i>
+              <strong>로그인</strong>
+            </i>
           </Typography>
 
           <TextField
@@ -146,7 +148,9 @@ const LoginModal = () => {
 
           {message && (
             <Typography color="error" variant="body2" sx={{ marginTop: 2 }}>
-              {message}
+              <i>
+                <strong>{message}</strong>
+              </i>
             </Typography>
           )}
 

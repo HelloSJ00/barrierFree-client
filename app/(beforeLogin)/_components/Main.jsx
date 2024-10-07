@@ -19,9 +19,13 @@ const Main = () => {
         </div>
       </div>
       <div className={styles.rightSection}>
-        <h2>지금 바로 이용하세요</h2>
+        <h2>
+          <i>지금 바로 이용하세요</i>
+        </h2>
         <BasicButton component="a" href="/signup" text="회원가입" />
-        <h2>이미 가입하셨나요 ?</h2>
+        <h2>
+          <i>이미 가입하셨나요 ?</i>
+        </h2>
         <BasicButton component="a" href="/login" text="로그인" />
       </div>
     </div>
