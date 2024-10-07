@@ -8,6 +8,7 @@ import Link from "next/link";
 //ICON
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import KBarrierFreeLogo from "@/app/_components/kBarrierFreeLogo";
 
 const Navbar = () => {
   const onClickLogout = () => {};
@@ -17,7 +18,7 @@ const Navbar = () => {
       <div className={styles.header}>
         <Link href="/home" passHref>
           <Button color="inherit" sx={{ fontSize: 20 }}>
-            배리어 프리
+            <KBarrierFreeLogo></KBarrierFreeLogo>
           </Button>
         </Link>
       </div>
@@ -26,7 +27,7 @@ const Navbar = () => {
         color="primary"
         sx={{
           flexGrow: 1,
-          backgroundColor: "white",
+          backgroundColor: "transparent", // 배경 투명
           color: "#66bb6a",
           boxShadow: "none", // 그림자 제거
         }}
