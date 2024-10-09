@@ -73,7 +73,6 @@ const Navbar = () => {
                 </i>
               </Button>
             </Link>
-
             <Link href="/user" passHref>
               <Button
                 color="inherit"
@@ -90,11 +89,11 @@ const Navbar = () => {
                 </i>
               </Button>
             </Link>
-            <Link href="/home/recommended" passHref>
+            {/* <Link href="/home/recommended" passHref>
               <Button color="inherit" sx={{ fontSize: 20 }}>
                 임시 추천
               </Button>
-            </Link>
+            </Link> */}
           </Box>
         </Toolbar>
       </AppBar>

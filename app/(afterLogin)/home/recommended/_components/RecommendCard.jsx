@@ -5,13 +5,27 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import BasicSmallBtn from "./BasicSmallBtn";
 import { useRouter } from "next/navigation";
-import { userAgent } from "next/server";
+import useGeoStore from "@/app/_libs/useGeoStore";
+
 const RecommedCard = ({ place, order }) => {
+  const { setCoordinates } = useGeoStore();
+
   const router = useRouter();
 
-  const onClickReviewPage = () => {};
-  const onClickPlaceDetails = () => {};
-  const onClickMoveMap = () => {};
+  const onClickReviewPage = () => {
+    router.push(`/home/recommended/${place.PLACE_KEY}/reviews`);
+  };
+  const onClickPlaceDetails = () => {
+    router.push(`/home/recommended/${place.PLACE_KEY}/info`);
+  };
+  const onClickMoveMap = () => {
+    const lat = place.latitude;
+    const lon = place.longitude;
+
+    // Zustand를 사용하여 위도와 경도 상태를 업데이트
+    setCoordinates(lat, lon);
+    console.log(`위도: ${lat}, 경도: ${lon}로 지도 이동`);
+  };
 
   return (
     <div className={styles.box}>

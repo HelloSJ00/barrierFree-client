@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { motion } from "framer-motion";
 
-const BasicSmallBtn = ({ text }) => {
+const BasicSmallBtn = ({ text, ...props }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.2 }}
@@ -24,6 +24,7 @@ const BasicSmallBtn = ({ text }) => {
             borderColor: "#388e3c", // hover 상태에서 보더 유지
           },
         }}
+        {...props}
       >
         <i>{text}</i>
       </Button>
