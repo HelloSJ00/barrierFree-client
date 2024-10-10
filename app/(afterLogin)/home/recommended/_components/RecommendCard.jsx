@@ -38,7 +38,7 @@ const RecommedCard = ({ place, order }) => {
           </i>
         </div>
         <div className={styles.btnBox}>
-          <BasicSmallBtn text={"리뷰보기"} onClick={onClickReviewPage} />
+          <BasicSmallBtn text={"리뷰"} onClick={onClickReviewPage} />
           <BasicSmallBtn text={"실시간 정보"} onClick={onClickPlaceDetails} />
           <BasicSmallBtn text={"장소로 이동"} onClick={onClickMoveMap} />
         </div>
