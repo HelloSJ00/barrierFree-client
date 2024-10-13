@@ -8,7 +8,7 @@ import Link from "next/link";
 //ICON
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
-import KBarrierFreeLogo from "@/app/_components/kBarrierFreeLogo";
+import KBarrierFreeLogo from "@/app/_components/KBarrierFreeLogo";
 
 const Navbar = () => {
   const onClickLogout = () => {};
