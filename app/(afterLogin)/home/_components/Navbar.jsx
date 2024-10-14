@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
@@ -8,7 +8,7 @@ import Link from "next/link";
 //ICON
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
-import KBarrierFreeLogo from "@/app/_components/kBarrierFreeLogo";
+import KBarrierFreeLogo from "@/app/_components/KBarrierFreeLogo";
 
 const Navbar = () => {
   const onClickLogout = () => {};

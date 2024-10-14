@@ -91,7 +91,9 @@ const SignupForm = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          회원가입
+          <i>
+            <strong>회원가입</strong>
+          </i>
         </Typography>
         <TextField
           label="이메일"
@@ -143,7 +145,9 @@ const SignupForm = () => {
         />
         {message && (
           <Typography color="error" variant="body2" sx={{ marginTop: 2 }}>
-            {message}
+            <i>
+              <strong>{message}</strong>
+            </i>
           </Typography>
         )}
         <div className={styles.signupFooter}>

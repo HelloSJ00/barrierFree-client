@@ -6,6 +6,7 @@ import { redirect, useRouter } from "next/navigation";
 import BasicButton from "./common/BasicButton";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import { login } from "../login/_api/api";
 
 const LoginModal = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ const LoginModal = () => {
   //로그인 시도
   const onSubmit = async (event) => {
     event.preventDefault();
+    console.log("로그인 시도");
 
     // 이메일과 비밀번호 입력 확인
     if (!email || !password) {
@@ -37,11 +39,11 @@ const LoginModal = () => {
       const response = await login(loginForm);
 
       // 로그인 성공 시 처리
-      if (response.success) {
+      if (response.message === "Login successful") {
         // 서버 응답에 success 필드가 있다고 가정
-        setMessage("로그인 성공!");
         console.log("이메일:", email);
         console.log("비밀번호:", password);
+        router.push("/home");
         // 여기에 로그인 성공 후 리다이렉트 또는 세션 관리 코드 추가 가능
       } else {
         setMessage(
@@ -70,7 +72,6 @@ const LoginModal = () => {
       animate={{ opacity: 1 }} // 애니메이션으로 투명도 1
       exit={{ opacity: 0 }} // 닫힐 때 다시 투명도 0
       transition={{ duration: 0.3 }} // 애니메이션 지속 시간
-      onClick={onClickClose}
       style={{
         position: "fixed",
         top: "0",
@@ -119,7 +120,9 @@ const LoginModal = () => {
           }}
         >
           <Typography variant="h4" component="h1" gutterBottom>
-            로그인
+            <i>
+              <strong>로그인</strong>
+            </i>
           </Typography>
 
           <TextField
@@ -146,7 +149,9 @@ const LoginModal = () => {
 
           {message && (
             <Typography color="error" variant="body2" sx={{ marginTop: 2 }}>
-              {message}
+              <i>
+                <strong>{message}</strong>
+              </i>
             </Typography>
           )}
 

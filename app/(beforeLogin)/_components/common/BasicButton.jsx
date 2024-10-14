@@ -27,7 +27,9 @@ const BasicButton = ({ text, ...props }) => {
         }}
         {...props}
       >
-        {text}
+        <i>
+          <strong>{text}</strong>
+        </i>
       </Button>
     </motion.div>
   );
