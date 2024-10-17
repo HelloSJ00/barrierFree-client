@@ -5,15 +5,33 @@ import BackButton from "@/app/_components/BackButton";
 import styles from "./review.module.css";
 import PlaceReviews from "./_components/PlaceReviews";
 import { TextField, Rating, Button } from "@mui/material";
+import { useParams } from "next/navigation";
+import { registerReview } from "./_libs/registerReview";
 const Reviews = () => {
+  const params = useParams(); // useParams 훅 사용
+  const { placeId } = params; // placeId 추출
+
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);
-  const handleSubmit = () => {
-    console.log({
-      reviewContent: content,
-      reviewScore: rating,
-    });
-    // 여기에 서버로 데이터를 전송하는 로직을 추가하면 됩니다.
+  const [refetchTrigger, setRefetchTrigger] = useState(false);
+  const handleSubmit = async () => {
+    try {
+      // 리뷰 작성 API 호출
+      await registerReview({
+        placeId: placeId,
+        content: content,
+        rating: rating,
+      });
+
+      // 리뷰 작성 후 refetch 트리거
+      setRefetchTrigger((prev) => !prev);
+
+      // 폼 초기화
+      setContent("");
+      setRating(0);
+    } catch (error) {
+      console.error("리뷰 작성 실패:", error);
+    }
   };
   return (
     <LeftMotionProvider>
@@ -30,7 +48,7 @@ const Reviews = () => {
           <div className={styles.box}></div>
         </div>
         <section className={styles.reviewContainer}>
-          <PlaceReviews />
+          <PlaceReviews placeId={placeId} refetchTrigger={refetchTrigger} />
         </section>
         <div className={styles.reviewForm}>
           <p>

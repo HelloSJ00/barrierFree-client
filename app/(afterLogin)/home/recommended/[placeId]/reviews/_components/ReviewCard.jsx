@@ -7,7 +7,11 @@ const Review = ({ review }) => {
   return (
     <div className={styles.reviewBox}>
       <div className={styles.nameBox}>
-        <span>{review.username}</span>
+        <span>
+          <i>
+            <strong>{review.username}</strong>
+          </i>
+        </span>
       </div>
       <div className={styles.contentBox}>
         <span>{review.content}</span>

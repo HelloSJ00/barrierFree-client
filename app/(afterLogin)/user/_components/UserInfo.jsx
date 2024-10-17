@@ -47,6 +47,7 @@ const UserInfo = () => {
     console.log("수정 완료하기 버튼 클릭됨");
     try {
       const response = await updateUserInfo({ username: editedUsername });
+
       if (response.ok) {
         setUserInfo((prev) => ({
           ...prev,
