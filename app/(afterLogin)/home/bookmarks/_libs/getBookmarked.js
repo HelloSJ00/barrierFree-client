@@ -15,3 +15,7 @@ export async function getBookmarked() {
 
   return data.data; // 추출된 데이터를 반환
 }
+
+/*
+  interface bookmarkedPlaces = [{장소 이름 , 경도, 위도 , 북마크 여부}]
+*/

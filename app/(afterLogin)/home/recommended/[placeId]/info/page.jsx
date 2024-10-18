@@ -7,7 +7,7 @@ import { TextField, Button, Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import CloseButton from "@/app/_components/CloseButton";
 import ModalBackground from "@/app/_components/ModalBackground";
-import Bookmark from "./_components/Bookmark";
+import Bookmark from "../../../_components/Bookmark";
 import { useParams } from "next/navigation";
 const Info = () => {
   const router = useRouter();

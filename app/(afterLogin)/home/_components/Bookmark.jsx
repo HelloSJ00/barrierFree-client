@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import { deleteBookmark } from "../_api/deleteBookmark";
-import { registerBookmark } from "../_api/registerBookmark";
+import { deleteBookmark } from "../recommended/[placeId]/info/_api/deleteBookmark";
+import { registerBookmark } from "../recommended/[placeId]/info/_api/registerBookmark";
 const Bookmark = ({ placeId }) => {
   // 북마크 상태를 관리하는 state
   const [bookmarked, setBookmarked] = useState(false);
@@ -39,9 +39,9 @@ const Bookmark = ({ placeId }) => {
       }}
     >
       {bookmarked ? (
-        <BookmarkIcon style={{ color: "#1976d2", fontSize: 24 }} />
+        <BookmarkIcon style={{ color: "#388e3c", fontSize: 24 }} />
       ) : (
-        <BookmarkBorderIcon style={{ color: "#1976d2", fontSize: 24 }} />
+        <BookmarkBorderIcon style={{ color: "#388e3c", fontSize: 24 }} />
       )}
     </IconButton>
   );

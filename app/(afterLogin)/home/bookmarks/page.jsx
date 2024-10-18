@@ -19,7 +19,7 @@ const Page = async () => {
           </div>
           <div className={styles.box}></div>
         </div>
-        <section>
+        <section className={styles.PlacesBookmarkedSection}>
           {" "}
           <PlacesBookmarked />
         </section>
