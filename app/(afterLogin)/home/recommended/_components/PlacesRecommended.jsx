@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getPlacesRecommend } from "../_libs/getPlacesRecommed";
+import { getPlacesRecommend } from "../_libs/getRecommedPlaces";
 import RecommendCard from "./RecommendCard";
 const PlacesRecommneded = () => {
   // const { data } = useQuery({

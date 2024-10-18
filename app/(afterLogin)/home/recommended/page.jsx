@@ -8,7 +8,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import { getPlacesRecommend } from "./_libs/getPlacesRecommed";
+import { getPlacesRecommend } from "./_libs/getRecommedPlaces";
 
 const Page = async () => {
   const queryClient = new QueryClient();

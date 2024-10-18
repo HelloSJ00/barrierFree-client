@@ -1,0 +1,10 @@
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.ratingAndSubmit {
+  display: flex;
+  justify-content: space-between;
+}

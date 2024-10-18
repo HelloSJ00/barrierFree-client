@@ -1,15 +1,16 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
 import React, { useState, useEffect } from "react";
-import { getReviews } from "../_libs/getReviews";
-import ReviewCard from "./ReviewCard";
-import styles from "./placeReviews.module.css";
+import { useQuery } from "@tanstack/react-query";
+import { getBookmarked } from "../_libs/getBookmarked";
+import styles from "./placeBookmarked.module.css";
+import BookmarkCard from "./BookmarkCard";
 
-const PlaceReviews = ({ placeId, refetchTrigger, fn }) => {
+const PlacesBookmarked = () => {
+  const [refetchTrigger, setRefetchTrigger] = useState(false);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["reviews", placeId],
-    queryFn: getReviews,
-    enabled: placeId !== null && placeId !== undefined, // placeId가 유효할 때만 쿼리 실행
+    queryKey: ["places", "bookmarked"],
+    queryFn: getBookmarked,
     staleTime: 60 * 1000, // 밀리초 단위
     gcTime: 300 * 1000,
   });
@@ -28,15 +29,15 @@ const PlaceReviews = ({ placeId, refetchTrigger, fn }) => {
   // 리뷰가 없을 경우 "현재 작성된 리뷰가 없습니다"를 출력
   if (!data || data.length === 0) {
     return (
-      <div className={styles.noReviewContainer}>
+      <div className={styles.noBookmarkContainer}>
         <p>
           <i>
-            <strong>현재 작성된 리뷰가 없습니다 !</strong>
+            <strong>현재 찜한 장소가 없습니다 !</strong>
           </i>
         </p>
 
         <p>
-          <i>처음으로 장소에 대한 후기를 공유해보세요 !</i>
+          <i>실시간 추천 기능으로 찜할 장소를 찾아보세요 !</i>
         </p>
       </div>
     );
@@ -44,11 +45,11 @@ const PlaceReviews = ({ placeId, refetchTrigger, fn }) => {
 
   return (
     <>
-      {data.map((review, index) => (
-        <ReviewCard key={index} review={review} fn={fn} />
+      {data.map((place, index) => (
+        <BookmarkCard key={index} place={place} />
       ))}
     </>
   );
 };
 
-export default PlaceReviews;
+export default PlacesBookmarked;

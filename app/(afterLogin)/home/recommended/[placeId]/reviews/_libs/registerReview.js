@@ -1,5 +1,3 @@
-import { ContentPasteSearchOutlined } from "@mui/icons-material";
-
 export async function registerReview(reviewForm) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/review/register`,

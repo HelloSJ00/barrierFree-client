@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./bookmark.module.css";
 import BackButton from "@/app/_components/BackButton";
 import LeftMotionProvider from "../_components/LeftMotionProvider";
+import PlacesBookmarked from "./_components/PlacesBookmarked";
 
 const Page = async () => {
   return (
@@ -10,11 +11,18 @@ const Page = async () => {
         <div className={styles.header}>
           <BackButton />
           <div className={styles.headerTextBox}>
-            <span className={styles.headerText}>즐겨찾기</span>
+            <span className={styles.headerText}>
+              <i>
+                <strong>찜한 장소</strong>
+              </i>
+            </span>
           </div>
           <div className={styles.box}></div>
         </div>
-        <section></section>
+        <section>
+          {" "}
+          <PlacesBookmarked />
+        </section>
       </div>
     </LeftMotionProvider>
   );

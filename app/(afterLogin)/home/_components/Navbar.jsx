@@ -69,7 +69,7 @@ const Navbar = () => {
               >
                 <BookmarksIcon sx={{ fontSize: 24 }} />
                 <i>
-                  <strong>즐겨찾기</strong>
+                  <strong>찜한 장소</strong>
                 </i>
               </Button>
             </Link>
