@@ -5,11 +5,11 @@ import { getReviews } from "../_libs/getReviews";
 import ReviewCard from "./ReviewCard";
 import styles from "./placeReviews.module.css";
 
-const PlaceReviews = ({ placeId, refetchTrigger, fn }) => {
+const PlaceReviews = ({ placeKey, refetchTrigger, fn }) => {
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["reviews", placeId],
+    queryKey: ["reviews", placeKey],
     queryFn: getReviews,
-    enabled: placeId !== null && placeId !== undefined, // placeId가 유효할 때만 쿼리 실행
+    enabled: placeKey !== null && placeKey !== undefined, // placeKey 유효할 때만 쿼리 실행
     staleTime: 60 * 1000, // 밀리초 단위
     gcTime: 300 * 1000,
   });

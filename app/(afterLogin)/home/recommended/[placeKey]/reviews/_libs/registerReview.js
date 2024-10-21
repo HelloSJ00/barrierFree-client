@@ -1,4 +1,5 @@
 export async function registerReview(reviewForm) {
+  console.log(JSON.stringify(reviewForm));
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/review/register`,
     {

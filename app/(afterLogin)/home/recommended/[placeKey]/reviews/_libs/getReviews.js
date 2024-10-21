@@ -1,9 +1,9 @@
 export async function getReviews({ queryKey }) {
-  const [_1, placeId] = queryKey; // queryKey에서 placeId 추출
+  const [_1, placeKey] = queryKey; // queryKey에서 placeId 추출
 
   // placeId를 쿼리 파라미터로 URL에 추가
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getall?placeId=${placeId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getall?placeKey=${placeKey}`,
     {
       method: "GET", // GET 요청
       credentials: "include", // 쿠키를 포함하여 요청
@@ -11,7 +11,7 @@ export async function getReviews({ queryKey }) {
         "Content-Type": "application/json", // 필요에 따라 Content-Type 헤더 추가
       },
       next: {
-        tags: ["reviews", placeId],
+        tags: ["reviews", placeKey],
       },
     }
   );

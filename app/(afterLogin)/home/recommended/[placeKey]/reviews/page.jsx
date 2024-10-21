@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 import ReviewForm from "./_components/ReviewForm";
 const Reviews = () => {
   const params = useParams(); // useParams 훅 사용
-  const { placeId } = params; // placeId 추출
+  const { placeKey } = params; // placeKey 추출
   const [refetchTrigger, setRefetchTrigger] = useState(false);
 
   return (
@@ -27,12 +27,12 @@ const Reviews = () => {
         </div>
         <section className={styles.reviewContainer}>
           <PlaceReviews
-            placeId={placeId}
+            placeKey={placeKey}
             refetchTrigger={refetchTrigger}
             fn={setRefetchTrigger}
           />
         </section>
-        <ReviewForm placeId={placeId} fn={setRefetchTrigger} />
+        <ReviewForm placeKey={placeKey} fn={setRefetchTrigger} />
       </div>
     </LeftMotionProvider>
   );

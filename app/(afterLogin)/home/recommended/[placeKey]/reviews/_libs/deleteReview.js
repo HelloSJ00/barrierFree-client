@@ -1,6 +1,6 @@
-export async function deleteReview(placeId) {
+export async function deleteReview(placeKey) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/review/delete?placeId=${placeId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/review/delete?placeKey=${placeKey}`,
     {
       method: "DELETE",
       credentials: "include",

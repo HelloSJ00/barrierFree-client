@@ -4,14 +4,14 @@ import { TextField, Rating, Button } from "@mui/material";
 import { registerReview } from "../_libs/registerReview";
 import styles from "./reviewForm.module.css";
 
-const ReviewForm = ({ placeId, fn }) => {
+const ReviewForm = ({ placeKey, fn }) => {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);
   const handleSubmit = async () => {
     try {
       // 리뷰 작성 API 호출
       await registerReview({
-        placeId: placeId,
+        placeKey: placeKey,
         content: content,
         rating: rating,
       });

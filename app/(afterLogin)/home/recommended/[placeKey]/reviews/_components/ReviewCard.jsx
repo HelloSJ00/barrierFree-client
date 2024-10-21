@@ -11,9 +11,9 @@ import { deleteReview } from "../_libs/deleteReview";
 const Review = ({ review, fn }) => {
   const onClickDeleteReview = async (review) => {
     try {
-      console.log(review.placeId);
+      console.log(review.placeKey);
       // 리뷰 삭제 함수 호출 (reviewId를 사용)
-      await deleteReview(review.placeId);
+      await deleteReview(review.placeKey);
       alert("리뷰가 성공적으로 삭제되었습니다.");
       // 리뷰 작성 후 refetch 트리거
       // 상태 업데이트 확인을 위한 로그

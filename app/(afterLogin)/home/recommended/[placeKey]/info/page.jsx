@@ -12,7 +12,7 @@ import { useParams } from "next/navigation";
 const Info = () => {
   const router = useRouter();
   const params = useParams(); // useParams 훅 사용
-  const { placeId } = params;
+  const { placeKey } = params;
 
   const closeModal = () => {
     router.back(); // 뒤로 가기를 통해 모달을 닫고 원래 페이지로 돌아감
@@ -42,7 +42,7 @@ const Info = () => {
       >
         <div className={styles.modalHeader}>
           <CloseButton onClickBtn={closeModal} />
-          <Bookmark placeId={placeId} />
+          <Bookmark placeId={placeKey} />
         </div>
         <div className={styles.modalBody}></div>
       </motion.div>
