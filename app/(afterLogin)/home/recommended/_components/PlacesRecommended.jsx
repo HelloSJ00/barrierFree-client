@@ -18,6 +18,7 @@ const PlacesRecommneded = () => {
         REC_SCORE: 86,
         latitude: 37.56621295,
         longitude: 126.975170881406,
+        mine: true,
       },
       {
         PLACE_NM: "창덕궁",
@@ -25,6 +26,7 @@ const PlacesRecommneded = () => {
         REC_SCORE: 82,
         latitude: 37.58238725,
         longitude: 126.991701339551,
+        mine: true,
       },
       {
         PLACE_NM: "경복궁",
@@ -32,6 +34,7 @@ const PlacesRecommneded = () => {
         REC_SCORE: 80,
         latitude: 37.57975395,
         longitude: 126.976680698869,
+        mine: true,
       },
       {
         PLACE_NM: "e평궁",
@@ -39,6 +42,7 @@ const PlacesRecommneded = () => {
         REC_SCORE: 79,
         latitude: 37.5044892,
         longitude: 126.8820115,
+        mine: true,
       },
       {
         PLACE_NM: "eq궁",
@@ -46,6 +50,7 @@ const PlacesRecommneded = () => {
         REC_SCORE: 77,
         latitude: 37.57975395,
         longitude: 126.976680698869,
+        mine: true,
       },
     ],
   };

@@ -1,6 +1,8 @@
-export async function getInfoDetails({ placeId }) {
+export async function getInfoDetails() {
+  const [_1, placeKey] = queryKey; // queryKey에서 placeId 추출
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/place/details?placeId=${placeId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/place/details?placeKey=${placeKey}`,
     {
       method: "GET",
       crudential: true,

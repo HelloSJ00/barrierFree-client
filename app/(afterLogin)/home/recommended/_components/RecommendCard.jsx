@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./recommendCard.module.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import BasicSmallBtn from "./BasicSmallBtn";
+import BasicSmallBtn from "../../_components/BasicSmallBtn";
 import { useRouter } from "next/navigation";
 import useGeoStore from "@/app/_libs/useGeoStore";
 

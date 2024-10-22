@@ -1,7 +1,8 @@
 export async function getReviews({ queryKey }) {
-  const [_1, placeKey] = queryKey; // queryKey에서 placeId 추출
+  const [_1, placeKey] = queryKey; // queryKey에서 placeKey 추출
+  console.log(placeKey);
 
-  // placeId를 쿼리 파라미터로 URL에 추가
+  // placeKey 쿼리 파라미터로 URL에 추가
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/review/getall?placeKey=${placeKey}`,
     {

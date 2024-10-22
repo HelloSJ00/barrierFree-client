@@ -90,7 +90,7 @@ const PlacesBookmarked = () => {
   return (
     <>
       {data.REC_LIST.map((place, index) => (
-        <BookmarkCard key={index} place={place} />
+        <BookmarkCard key={index} place={place} order={index + 1} />
       ))}
     </>
   );

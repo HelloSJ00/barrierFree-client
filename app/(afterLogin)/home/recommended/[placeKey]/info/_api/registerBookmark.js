@@ -1,7 +1,7 @@
-export async function registerBookmark({ placeId }) {
+export async function registerBookmark({ placeKey }) {
   // placeId를 쿼리 파라미터로 URL에 추가
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/register?placeId=${placeId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/register?placeKey=${placeKey}`,
     {
       method: "GET", // GET 요청
       credentials: "include", // 쿠키를 포함하여 요청

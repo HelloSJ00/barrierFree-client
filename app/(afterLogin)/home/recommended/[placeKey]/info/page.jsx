@@ -3,16 +3,25 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import styles from "./info.module.css";
-import { TextField, Button, Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import CloseButton from "@/app/_components/CloseButton";
 import ModalBackground from "@/app/_components/ModalBackground";
 import Bookmark from "../../../_components/Bookmark";
 import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getInfoDetails } from "./_api/getInfoDetail";
 const Info = () => {
   const router = useRouter();
   const params = useParams(); // useParams 훅 사용
   const { placeKey } = params;
+
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["info", placeKey],
+    queryFn: getInfoDetails,
+    enabled: placeKey !== null && placeKey !== undefined, // placeKey 유효할 때만 쿼리 실행
+    staleTime: 60 * 1000, // 밀리초 단위
+    gcTime: 300 * 1000,
+  });
 
   const closeModal = () => {
     router.back(); // 뒤로 가기를 통해 모달을 닫고 원래 페이지로 돌아감
@@ -42,7 +51,7 @@ const Info = () => {
       >
         <div className={styles.modalHeader}>
           <CloseButton onClickBtn={closeModal} />
-          <Bookmark placeId={placeKey} />
+          <Bookmark placeKey={placeKey} />
         </div>
         <div className={styles.modalBody}></div>
       </motion.div>

@@ -5,9 +5,9 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import { deleteBookmark } from "../recommended/[placeKey]/info/_api/deleteBookmark";
 import { registerBookmark } from "../recommended/[placeKey]/info/_api/registerBookmark";
-const Bookmark = ({ placeKey }) => {
+const Bookmark = ({ placeKey, mine }) => {
   // 북마크 상태를 관리하는 state
-  const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(mine);
 
   // 북마크 상태를 토글하는 함수
   const toggleBookmark = async () => {
@@ -39,9 +39,9 @@ const Bookmark = ({ placeKey }) => {
       }}
     >
       {bookmarked ? (
-        <BookmarkIcon style={{ color: "#388e3c", fontSize: 24 }} />
+        <BookmarkIcon style={{ color: "#388e3c", fontSize: 32 }} />
       ) : (
-        <BookmarkBorderIcon style={{ color: "#388e3c", fontSize: 24 }} />
+        <BookmarkBorderIcon style={{ color: "#388e3c", fontSize: 32 }} />
       )}
     </IconButton>
   );

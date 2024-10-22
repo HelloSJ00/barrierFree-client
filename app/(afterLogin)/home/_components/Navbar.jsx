@@ -4,14 +4,35 @@ import styles from "./navbar.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 //ICON
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import KBarrierFreeLogo from "@/app/_components/KBarrierFreeLogo";
 
 const Navbar = () => {
-  const onClickLogout = () => {};
+  const router = useRouter();
+  const onClickLogout = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/user/logout`,
+        {
+          method: "POST",
+          credentials: "include", // 쿠키와 함께 요청을 보내기 위해 필요
+        }
+      );
+      console.log(response.status);
+
+      if (response.status === 200) {
+        // 로그아웃 성공 시 처리할 로직
+        router.push("/");
+      } else {
+        console.error("로그아웃 실패");
+      }
+    } catch (error) {
+      console.error("로그아웃 중 오류 발생:", error);
+    }
+  };
 
   return (
     <div className={styles.container}>
