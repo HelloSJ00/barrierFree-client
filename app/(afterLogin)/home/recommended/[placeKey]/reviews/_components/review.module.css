@@ -1,0 +1,23 @@
+.reviewBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 연한 회색 */
+}
+
+.nameBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contentBox {
+  min-height: 50px;
+}
+
+.ratingBox {
+  display: flex;
+  justify-content: space-between;
+}

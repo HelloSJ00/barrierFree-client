@@ -1,0 +1,22 @@
+.formContainer {
+  top: 100px;
+  width: 700px;
+  display: flex;
+  position: relative;
+  top: 100px;
+  justify-content: center;
+}
+
+.emailBox {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
+}
+.signupFooter {
+  margin: 50px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
