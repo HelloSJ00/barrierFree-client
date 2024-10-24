@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import styles from "./main.module.css";
-import Button from "@mui/material/Button";
 import BasicButton from "./common/BasicButton";
 import KBarrierFreeLogo from "@/app/_components/KBarrierFreeLogo";
 
