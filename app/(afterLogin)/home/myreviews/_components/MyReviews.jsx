@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getMyReviews } from "../_libs/getMyReviews";
 import ReviewCard from "../../recommended/[placeKey]/reviews/_components/ReviewCard";
+import styles from "./myReview.module.css";
 
 const MyReviews = ({ refetchTrigger, fn }) => {
   const { data, isLoading, error, refetch } = useQuery({
@@ -28,7 +29,7 @@ const MyReviews = ({ refetchTrigger, fn }) => {
       <div className={styles.noReviewContainer}>
         <p>
           <i>
-            <strong>현재 작성된 리뷰가 없습니다 !</strong>
+            <strong>현재 작성한 리뷰가 없습니다 !</strong>
           </i>
         </p>
 

@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import KBarrierFreeLogo from "@/app/_components/KBarrierFreeLogo";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 const Navbar = () => {
   const router = useRouter();
@@ -90,7 +91,16 @@ const Navbar = () => {
               </Button>
             </Link>
             <Link href="/home/myreviews" passHref>
-              <Button color="inherit" sx={{ fontSize: 20 }}>
+              <Button
+                color="inherit"
+                sx={{
+                  fontSize: 20,
+                  display: "flex", // 아이콘과 텍스트를 가로로 정렬
+                  alignItems: "center", // 세로 가운데 정렬
+                  gap: 1, // 아이콘과 텍스트 사이의 간격 설정
+                }}
+                startIcon={<RateReviewIcon />}
+              >
                 <i>
                   <strong>내가 작성한 리뷰</strong>
                 </i>

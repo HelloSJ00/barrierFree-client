@@ -1,6 +1,6 @@
 export async function getMyReviews() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getallMyReview`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getMyall`,
     {
       method: "GET", // GET 요청
       credentials: "include", // 쿠키를 포함하여 요청

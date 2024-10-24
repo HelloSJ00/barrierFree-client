@@ -35,6 +35,16 @@ const Review = ({ review, fn }) => {
             <strong>{review.username}</strong>
           </i>
         </span>
+        <span>
+          <i>{review.placename}</i>
+        </span>
+        <span>
+          {new Date(review.createdAt).toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          })}
+        </span>
       </div>
       <div className={styles.contentBox}>
         <span>{review.content}</span>

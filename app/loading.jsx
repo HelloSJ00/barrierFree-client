@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
+import styles from "./loading.module.css";
 const Loading = () => {
   const containerRef = useRef(null);
 
@@ -20,7 +21,12 @@ const Loading = () => {
     }
   }, []);
 
-  return <div ref={containerRef} style={{ width: 200, height: 200 }} />;
+  return (
+    <div className={styles.cotainer}>
+      {" "}
+      <div ref={containerRef} style={{ width: 200, height: 200 }} />;
+    </div>
+  );
 };
 
 export default Loading;
