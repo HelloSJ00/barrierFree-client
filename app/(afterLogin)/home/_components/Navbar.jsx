@@ -73,11 +73,6 @@ const Navbar = () => {
               width: "100%", // 부모에 맞게 전체 너비 설정
             }}
           >
-            <Link href="/" passHref>
-              <Button color="inherit" sx={{ fontSize: 20 }}>
-                ?
-              </Button>
-            </Link>
             <Link href="/home/bookmarks" passHref>
               <Button
                 color="inherit"
@@ -94,6 +89,14 @@ const Navbar = () => {
                 </i>
               </Button>
             </Link>
+            <Link href="/home/myreviews" passHref>
+              <Button color="inherit" sx={{ fontSize: 20 }}>
+                <i>
+                  <strong>내가 작성한 리뷰</strong>
+                </i>
+              </Button>
+            </Link>
+
             <Link href="/user" passHref>
               <Button
                 color="inherit"
