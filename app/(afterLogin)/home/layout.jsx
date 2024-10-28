@@ -5,6 +5,12 @@ import { cookies } from "next/headers";
 import { Suspense } from "react";
 import Loading from "@/app/loading";
 
+// import dynamic from "next/dynamic";
+
+// const NaverMap = dynamic(() => import("./_components/Map"), {
+//   ssr: false, // 서버사이드 렌더링 비활성화
+// });
+
 const Layout = ({ children }) => {
   const cookieStore = cookies();
   const sessionCookie = cookieStore.get("JSESSIONID");

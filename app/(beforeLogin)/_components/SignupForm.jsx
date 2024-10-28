@@ -4,7 +4,9 @@ import styles from "./signupForm.module.css";
 import BasicButton from "./common/BasicButton";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { signup, checkEmailAvailability } from "../signup/_api/api";
+import { useRouter } from "next/navigation";
 const SignupForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
@@ -19,9 +21,10 @@ const SignupForm = () => {
   const verifyEmail = async () => {
     try {
       const data = await checkEmailAvailability(email);
-      if (data.isAvailable) {
+      if (data.status === 200) {
         setEmailVerified(true);
-        setMessage("이메일이 사용 가능합니다.");
+        setMessage("");
+        alert("사용 가능한 이메일입니다 !");
       } else {
         setEmailVerified(false);
         setMessage("이메일이 이미 사용 중입니다.");
@@ -64,8 +67,10 @@ const SignupForm = () => {
     // 회원가입 API 호출
     try {
       const response = await signup(formData); // formData를 서버로 전달
-      if (response.success) {
-        setMessage("회원가입이 성공적으로 완료되었습니다.");
+      if (response.status == 200) {
+        setMessage("");
+        alert("회원가입이 완료되었습니다 !");
+        router.push("/");
       } else {
         setMessage("회원가입에 실패했습니다.");
       }
