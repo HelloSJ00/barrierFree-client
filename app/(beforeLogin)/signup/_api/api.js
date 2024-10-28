@@ -2,11 +2,22 @@ import axios from "axios";
 
 export const checkEmailAvailability = async (email) => {
   try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/user/emailcheck`,
-      { email }
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_BASE_URL
+      }/user/emailCheck?email=${encodeURIComponent(email)}`,
+      {
+        method: "GET",
+      }
     );
-    return response.data; // 서버에서 온 응답 데이터 반환
+
+    if (!response.ok) {
+      throw new Error("Error checking email availability");
+    }
+
+    const data = await response.json(); // 서버에서 온 응답 데이터 반환
+    console.log(data);
+    return data;
   } catch (error) {
     console.error("Error checking email availability:", error);
     throw error;
@@ -24,6 +35,7 @@ export const signup = async (formData) => {
         },
       }
     );
+    console.log(response.data);
     return response.data; // 서버 응답 반환
   } catch (error) {
     console.error("회원가입 API 호출 중 오류:", error);

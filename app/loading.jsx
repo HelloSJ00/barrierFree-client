@@ -1,34 +1,43 @@
 "use client";
 import { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
 import styles from "./loading.module.css";
 
 const Loading = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
-      const lottie = dynamic(() => import("lottie-web"), { ssr: false });
-      lottie.then((Lottie) => {
-        const animation = Lottie.loadAnimation({
-          container: containerRef.current,
-          renderer: "svg",
-          loop: true,
-          autoplay: true,
-          path: "/animations/animation.json", // 올바른 경로로 수정
-        });
+    let animation = null;
 
-        return () => {
-          animation.destroy(); // 컴포넌트 언마운트 시 애니메이션 제거
-        };
-      });
-    }
+    const loadAnimation = async () => {
+      if (typeof window !== "undefined" && containerRef.current) {
+        try {
+          const Lottie = (await import("lottie-web")).default; // 비동기 import로 모듈 가져오기
+          if (Lottie && typeof Lottie.loadAnimation === "function") {
+            animation = Lottie.loadAnimation({
+              container: containerRef.current,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              path: "/Animation - 1729675646601.json", // 애니메이션 경로
+            });
+          }
+        } catch (error) {
+          console.error("Lottie 웹 애니메이션 로드 중 오류:", error);
+        }
+      }
+    };
+
+    loadAnimation();
+
+    return () => {
+      if (animation) {
+        animation.destroy();
+      }
+    };
   }, []);
 
   return (
     <div className={styles.container}>
-      {" "}
-      {/* 오타 수정 */}
       <div ref={containerRef} style={{ width: 200, height: 200 }} />
     </div>
   );
