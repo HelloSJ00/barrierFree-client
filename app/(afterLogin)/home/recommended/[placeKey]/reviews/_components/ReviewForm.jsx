@@ -29,9 +29,9 @@ const ReviewForm = ({ placeKey, fn }) => {
   return (
     <div className={styles.reviewForm}>
       <p>
-        <i>
-          <strong>리뷰를 작성하여 후기를 공유해보세요 !</strong>
-        </i>
+        {/* <i> */}
+        <strong>리뷰를 작성하여 후기를 공유해보세요 !</strong>
+        {/* </i> */}
       </p>
       <div className={styles.ratingAndSubmit}>
         <Rating
@@ -48,7 +48,7 @@ const ReviewForm = ({ placeKey, fn }) => {
             backgroundColor: "#388e3c", // MUI 테마 색상 사용
           }}
         >
-          Submit
+          작성하기
         </Button>
       </div>
       <TextField

@@ -1,37 +1,29 @@
 "use client";
 import { useEffect, useRef } from "react";
+import lottie from "lottie-web";
 import styles from "./loading.module.css";
 
 const Loading = () => {
   const containerRef = useRef(null);
+  const animationInstance = useRef(null); // 애니메이션 인스턴스를 저장할 Ref
 
   useEffect(() => {
-    let animation = null;
+    // 애니메이션이 한 번도 로드되지 않았을 때만 실행
+    if (!animationInstance.current && containerRef.current) {
+      animationInstance.current = lottie.loadAnimation({
+        container: containerRef.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "/animations/Animation - 1729675646601.json", // Lottie JSON 파일 경로
+      });
+    }
 
-    const loadAnimation = async () => {
-      if (typeof window !== "undefined" && containerRef.current) {
-        try {
-          const Lottie = (await import("lottie-web")).default; // 비동기 import로 모듈 가져오기
-          if (Lottie && typeof Lottie.loadAnimation === "function") {
-            animation = Lottie.loadAnimation({
-              container: containerRef.current,
-              renderer: "svg",
-              loop: true,
-              autoplay: true,
-              path: "/Animation - 1729675646601.json", // 애니메이션 경로
-            });
-          }
-        } catch (error) {
-          console.error("Lottie 웹 애니메이션 로드 중 오류:", error);
-        }
-      }
-    };
-
-    loadAnimation();
-
+    // 언마운트 시 애니메이션 인스턴스 제거
     return () => {
-      if (animation) {
-        animation.destroy();
+      if (animationInstance.current) {
+        animationInstance.current.destroy();
+        animationInstance.current = null; // 인스턴스를 null로 초기화하여 재사용 가능하게 설정
       }
     };
   }, []);

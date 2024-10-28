@@ -3,6 +3,7 @@
   height: 100dvh;
   background-color: rgba(255, 255, 255, 0.6); /* 투명한 흰색 */
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+  overflow-y: auto; /* 높이를 초과하면 세로 스크롤 활성화 */
 }
 
 .header {
