@@ -85,7 +85,8 @@ const Navbar = () => {
                 }}
               >
                 <BookmarksIcon sx={{ fontSize: 24 }} />
-                <i>찜한 장소</i>
+                {/* <i>찜한 장소</i> */}
+                찜한 장소
               </Button>
             </Link>
             <Link href="/home/myreviews" passHref>
@@ -99,7 +100,8 @@ const Navbar = () => {
                 }}
                 startIcon={<RateReviewIcon />}
               >
-                <i>내가 작성한 리뷰</i>
+                {/* <i>내가 작성한 리뷰</i> */}
+                내가 작성한 리뷰
               </Button>
             </Link>
 
@@ -114,7 +116,8 @@ const Navbar = () => {
                 }}
               >
                 <AccountCircleIcon sx={{ fontSize: 24 }} />
-                <i>계정</i>
+                {/* <i>계정</i> */}
+                계정
               </Button>
             </Link>
             {/* <Link href="/home/recommended" passHref>

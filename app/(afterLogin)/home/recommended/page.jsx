@@ -25,9 +25,10 @@ const Page = async () => {
             <BackButton />
             <div className={styles.headerTextBox}>
               <span className={styles.headerText}>
-                <i>
+                {/* <i>
                   <strong>추천 장소</strong>
-                </i>
+                </i> */}
+                추천 장소
               </span>
             </div>
             <div className={styles.box}></div>

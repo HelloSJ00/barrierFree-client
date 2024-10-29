@@ -30,9 +30,10 @@ const BookmarkCard = ({ place, order }) => {
       <section className={styles.infoSection}>
         <div>
           <Bookmark placeKey={place.PLACE_KEY} mine={place.mine} />
-          <i>
+          {/* <i>
             <strong>{place.PLACE_NM}</strong>
-          </i>
+          </i> */}
+          {place.PLACE_NM}
         </div>
         <div className={styles.btnBox}>
           <BasicSmallBtn text={"리뷰"} onClick={onClickReviewPage} />
@@ -52,9 +53,10 @@ const BookmarkCard = ({ place, order }) => {
           />
         </div>
         <div>
-          <strong>
+          {/* <strong>
             <i>추천 지수</i>
-          </strong>
+          </strong> */}
+          추천 지수
         </div>
       </section>
     </div>

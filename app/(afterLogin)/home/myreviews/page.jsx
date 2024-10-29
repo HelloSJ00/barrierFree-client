@@ -15,9 +15,10 @@ const Page = () => {
           <BackButton />
           <div className={styles.headerTextBox}>
             <span className={styles.headerText}>
-              <i>
+              {/* <i>
                 <strong> {""} 내가 작성한 리뷰</strong>
-              </i>
+              </i> */}
+              내가 작성한 리뷰
             </span>
           </div>
           <div className={styles.box}></div>

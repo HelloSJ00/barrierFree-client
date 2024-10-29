@@ -18,9 +18,10 @@ const Reviews = () => {
           <BackButton />
           <div className={styles.headerTextBox}>
             <span className={styles.headerText}>
-              <i>
+              {/* <i>
                 <strong> {""} 리뷰</strong>
-              </i>
+              </i> */}
+              리뷰
             </span>
           </div>
           <div className={styles.box}></div>
