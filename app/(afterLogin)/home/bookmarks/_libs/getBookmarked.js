@@ -1,6 +1,6 @@
-export async function getBookmarked() {
+export async function getBookmarked(page = 0) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/getall`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/paging?page=${page}`,
     {
       method: "GET",
       credentials: "include",
@@ -10,12 +10,11 @@ export async function getBookmarked() {
   if (!response.ok) {
     throw new Error("Failed to Fetch");
   }
-  // 응답 본문을 JSON 형식으로 변환하여 반환
-  const data = await response.json(); // 데이터를 추출하는 부분
 
-  return data.data; // 추출된 데이터를 반환
+  const data = await response.json();
+
+  return {
+    REC_LIST: data.data.content, // 북마크된 장소 목록
+    hasMore: !data.data.last, // 마지막 페이지인지 여부
+  };
 }
-
-/*
-  interface bookmarkedPlaces = [{장소 이름 , 경도, 위도 , 북마크 여부}]
-*/
