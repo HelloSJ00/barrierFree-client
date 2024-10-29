@@ -1,15 +1,15 @@
-export async function getReviews({ queryKey }) {
+export async function getReviews({ queryKey, pageParam = 0 }) {
   const [_1, placeKey] = queryKey; // queryKey에서 placeKey 추출
-  console.log(placeKey);
+  console.log(`placeKey: ${placeKey}, page: ${pageParam}`);
 
-  // placeKey 쿼리 파라미터로 URL에 추가
+  // placeKey와 page 쿼리 파라미터를 URL에 추가
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getall?placeKey=${placeKey}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/review/getPlaceAllPaging?placeKey=${placeKey}&page=${pageParam}`,
     {
-      method: "GET", // GET 요청
-      credentials: "include", // 쿠키를 포함하여 요청
+      method: "GET",
+      credentials: "include",
       headers: {
-        "Content-Type": "application/json", // 필요에 따라 Content-Type 헤더 추가
+        "Content-Type": "application/json",
       },
       next: {
         tags: ["reviews", placeKey],
@@ -17,13 +17,14 @@ export async function getReviews({ queryKey }) {
     }
   );
 
-  // 응답이 성공적인지 확인
   if (!response.ok) {
     throw new Error("Failed to Fetch");
   }
 
-  // 응답 본문을 JSON 형식으로 변환하여 반환
-  const data = await response.json(); // 데이터를 추출하는 부분
+  const data = await response.json();
 
-  return data.data; // 추출된 데이터를 반환
+  return {
+    reviews: data.data.content, // 리뷰 목록
+    hasMore: !data.data.last, // 마지막 페이지 여부
+  };
 }

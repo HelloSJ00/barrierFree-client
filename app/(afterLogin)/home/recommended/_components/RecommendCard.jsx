@@ -30,13 +30,14 @@ const RecommedCard = ({ place, order }) => {
   return (
     <div className={styles.box}>
       <section className={styles.infoSection}>
-        <div>
-          <i>
+        <span>
+          {/* <i>
             <strong>
               {order}. {place.PLACE_NM}
             </strong>
-          </i>
-        </div>
+          </i> */}
+          {order}. {place.PLACE_NM}
+        </span>
         <div className={styles.btnBox}>
           <BasicSmallBtn text={"리뷰"} onClick={onClickReviewPage} />
           <BasicSmallBtn text={"실시간 정보"} onClick={onClickPlaceDetails} />
@@ -55,9 +56,10 @@ const RecommedCard = ({ place, order }) => {
           />
         </div>
         <div>
-          <strong>
+          {/* <strong>
             <i>추천 지수</i>
-          </strong>
+          </strong> */}
+          추천 지수
         </div>
       </section>
     </div>

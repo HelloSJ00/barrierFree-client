@@ -96,9 +96,7 @@ const SignupForm = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          <i>
-            <strong>회원가입</strong>
-          </i>
+          <strong>회원가입</strong>
         </Typography>
         <TextField
           label="이메일"

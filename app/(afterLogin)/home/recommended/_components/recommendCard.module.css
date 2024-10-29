@@ -1,17 +1,17 @@
 .box {
   width: 100%;
-  height: 200px;
+  height: 220px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 연한 회색 */
 }
-
 .infoSection {
   flex: 1;
-  padding: 30px;
+  padding: 15px;
   font-size: 30px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .btnBox {

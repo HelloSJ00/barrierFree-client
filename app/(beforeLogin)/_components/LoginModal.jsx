@@ -120,9 +120,7 @@ const LoginModal = () => {
           }}
         >
           <Typography variant="h4" component="h1" gutterBottom>
-            <i>
-              <strong>로그인</strong>
-            </i>
+            <strong>로그인</strong>
           </Typography>
 
           <TextField
