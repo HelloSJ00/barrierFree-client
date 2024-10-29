@@ -17,6 +17,7 @@ const MyReviews = ({ refetchTrigger, fn }) => {
     isFetchingNextPage,
     error,
     isLoading,
+    refetch, // refetch 메서드 추가
   } = useInfiniteQuery({
     queryKey: ["myReviews"],
     queryFn: ({ pageParam = 0 }) => getMyReviews(pageParam),
@@ -75,7 +76,7 @@ const MyReviews = ({ refetchTrigger, fn }) => {
           <ReviewCard
             key={`${pageIndex}-${reviewIndex}`}
             review={review}
-            fn={fn}
+            fn={refetch}
           />
         ))
       )}

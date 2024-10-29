@@ -18,6 +18,7 @@ const PlaceReviews = ({ placeKey, refetchTrigger, fn }) => {
     isFetchingNextPage,
     error,
     isLoading,
+    refetch,
   } = useInfiniteQuery({
     queryKey: ["reviews", placeKey],
     queryFn: ({ pageParam = 0 }) =>
@@ -32,7 +33,12 @@ const PlaceReviews = ({ placeKey, refetchTrigger, fn }) => {
   // refetchTrigger가 변경될 때마다 refetch 호출
   useEffect(() => {
     fetchNextPage();
-  }, [refetchTrigger, fetchNextPage]);
+  }, [fetchNextPage]);
+
+  // refetchTrigger가 변경될 때마다 전체 데이터를 refetch
+  useEffect(() => {
+    refetch(); // fetchNextPage 대신 refetch 호출
+  }, [refetchTrigger, refetch]);
 
   // IntersectionObserver를 사용하여 마지막 아이템이 보일 때 fetchNextPage 호출
   useEffect(() => {
@@ -86,7 +92,7 @@ const PlaceReviews = ({ placeKey, refetchTrigger, fn }) => {
           <ReviewCard
             key={`${pageIndex}-${reviewIndex}`}
             review={review}
-            fn={fn}
+            fn={refetch}
           />
         ))
       )}
