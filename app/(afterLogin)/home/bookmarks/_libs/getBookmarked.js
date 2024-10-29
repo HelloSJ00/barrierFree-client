@@ -1,6 +1,6 @@
 export async function getBookmarked(page = 0) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/paging?page=${page}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/favoritePlace/list?page=${page}`,
     {
       method: "GET",
       credentials: "include",
