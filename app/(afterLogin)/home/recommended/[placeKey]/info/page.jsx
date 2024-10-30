@@ -1,19 +1,21 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./info.module.css";
 import { motion } from "framer-motion";
 import CloseButton from "@/app/_components/CloseButton";
 import ModalBackground from "@/app/_components/ModalBackground";
 import Bookmark from "../../../_components/Bookmark";
-import { useParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation"; // useSearchParams 추가
 import { useQuery } from "@tanstack/react-query";
 import { getInfoDetails } from "./_api/getInfoDetail";
 const Info = () => {
   const router = useRouter();
-  const params = useParams(); // useParams 훅 사용
+  const params = useParams();
+  const searchParams = useSearchParams(); // useSearchParams로 쿼리 파라미터 접근
   const { placeKey } = params;
+
+  // 쿼리 파라미터로부터 bookmarked 값 읽어오기
+  const isBookmarked = searchParams.get("bookmarked") === "true";
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["info", placeKey],
@@ -52,7 +54,7 @@ const Info = () => {
       >
         <div className={styles.modalHeader}>
           <CloseButton onClickBtn={closeModal} />
-          <Bookmark placeKey={placeKey} mine={false} />
+          <Bookmark placeKey={placeKey} mine={isBookmarked} />
         </div>
         <div className={styles.modalBody}></div>
       </motion.div>

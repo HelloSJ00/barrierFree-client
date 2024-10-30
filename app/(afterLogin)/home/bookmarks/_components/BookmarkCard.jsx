@@ -13,11 +13,14 @@ const BookmarkCard = ({ place, order }) => {
   const { setCoordinates } = useGeoStore();
 
   const onClickReviewPage = () => {
-    router.push(`/home/recommended/${place.PLACE_KEY}/reviews`);
+    router.push(`/home/recommended/${place.placeKey}/reviews`);
   };
   const onClickPlaceDetails = () => {
-    router.push(`/home/recommended/${place.PLACE_KEY}/info`);
+    router.push(
+      `/home/recommended/${place.placeKey}/info?bookmarked=${place.bookmarked}`
+    );
   };
+
   const onClickMoveMap = () => {
     const lat = place.latitude;
     const lon = place.longitude;
