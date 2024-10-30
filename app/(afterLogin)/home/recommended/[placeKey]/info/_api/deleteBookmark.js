@@ -1,7 +1,7 @@
 export async function deleteBookmark({ placeKey }) {
   // placeId를 쿼리 파라미터로 URL에 추가
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/bookmark/delete?placeKey=${placeKey}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/favoritePlace/delete?placeKey=${placeKey}`,
     {
       method: "GET", // GET 요청
       credentials: "include", // 쿠키를 포함하여 요청

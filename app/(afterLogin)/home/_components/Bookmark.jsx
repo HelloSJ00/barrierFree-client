@@ -6,20 +6,18 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import { deleteBookmark } from "../recommended/[placeKey]/info/_api/deleteBookmark";
 import { registerBookmark } from "../recommended/[placeKey]/info/_api/registerBookmark";
 const Bookmark = ({ placeKey, mine }) => {
-  // 북마크 상태를 관리하는 state
+  console.log("placeKey in Bookmark component:", placeKey);
+
   const [bookmarked, setBookmarked] = useState(mine);
 
-  // 북마크 상태를 토글하는 함수
   const toggleBookmark = async () => {
     try {
       if (bookmarked) {
-        // 북마크가 활성화되어 있다면 삭제 API 호출
-        await deleteBookmark(placeKey);
-        setBookmarked(false); // 상태를 false로 변경
+        await deleteBookmark({ placeKey });
+        setBookmarked(false);
       } else {
-        // 북마크가 비활성화되어 있다면 추가 API 호출
-        await registerBookmark(placeKey);
-        setBookmarked(true); // 상태를 true로 변경
+        await registerBookmark({ placeKey }); // 객체 형태로 placeKey 전달
+        setBookmarked(true);
       }
     } catch (error) {
       console.error("북마크 상태 변경 실패:", error);

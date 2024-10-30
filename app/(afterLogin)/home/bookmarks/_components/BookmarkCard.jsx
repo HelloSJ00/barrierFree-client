@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "./bookmark.module.css";
 import useGeoStore from "@/app/_libs/useGeoStore";
 import Bookmark from "../../_components/Bookmark";
@@ -29,11 +30,11 @@ const BookmarkCard = ({ place, order }) => {
     <div className={styles.box}>
       <section className={styles.infoSection}>
         <div>
-          <Bookmark placeKey={place.PLACE_KEY} mine={place.mine} />
+          <Bookmark placeKey={place.placeKey} mine={place.bookmarked} />
           {/* <i>
             <strong>{place.PLACE_NM}</strong>
           </i> */}
-          {place.PLACE_NM}
+          {place.placename}
         </div>
         <div className={styles.btnBox}>
           <BasicSmallBtn text={"리뷰"} onClick={onClickReviewPage} />

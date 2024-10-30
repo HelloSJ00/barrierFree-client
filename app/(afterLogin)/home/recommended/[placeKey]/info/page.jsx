@@ -28,6 +28,7 @@ const Info = () => {
   };
 
   useEffect(() => {
+    console.log(placeKey);
     const handleEscape = (event) => {
       if (event.key === "Escape") {
         closeModal();
@@ -51,7 +52,7 @@ const Info = () => {
       >
         <div className={styles.modalHeader}>
           <CloseButton onClickBtn={closeModal} />
-          <Bookmark placeKey={placeKey} />
+          <Bookmark placeKey={placeKey} mine={false} />
         </div>
         <div className={styles.modalBody}></div>
       </motion.div>

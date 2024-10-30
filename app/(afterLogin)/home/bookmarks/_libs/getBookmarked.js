@@ -12,6 +12,7 @@ export async function getBookmarked(page = 0) {
   }
 
   const data = await response.json();
+  console.log(data);
 
   return {
     REC_LIST: data.data.content, // 북마크된 장소 목록
