@@ -49,7 +49,12 @@ export async function registerReview(reviewForm) {
     alert("리뷰가 작성되었습니다!");
 
     // 서버에 리뷰 저장 성공 후 모델 학습 서버로 데이터 전송
-    // await registerReviewAI(reviewForm);
+
+    // await registerReviewAI({
+    //   placeKey: reviewForm.placeKey,
+    //   content: reviewForm.content,
+    //   rating: reviewForm.rating,
+    // });
 
     return data;
   }
