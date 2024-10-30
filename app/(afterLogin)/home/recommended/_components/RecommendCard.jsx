@@ -1,16 +1,37 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./recommendCard.module.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import BasicSmallBtn from "../../_components/BasicSmallBtn";
 import { useRouter } from "next/navigation";
 import useGeoStore from "@/app/_libs/useGeoStore";
+import { getPlaceCoordinate } from "../_libs/getPlaceCoordinate";
 
 const RecommedCard = ({ place, order }) => {
   const { setCoordinates } = useGeoStore();
-
   const router = useRouter();
+  // 위도와 경도 상태 선언
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
+  // 컴포넌트가 생성될 때 getPlaceCoordinate 호출
+  useEffect(() => {
+    const fetchCoordinates = async () => {
+      try {
+        const response = await getPlaceCoordinate({
+          placeKey: place.PLACE_KEY,
+        });
+        const { latitude, longitude } = response; // 응답에서 위도와 경도 추출
+        setLatitude(latitude);
+        setLongitude(longitude);
+      } catch (error) {
+        console.error("Error fetching coordinates:", error);
+      }
+    };
+
+    fetchCoordinates();
+  }, [place.PLACE_KEY]);
 
   const onClickReviewPage = () => {
     router.push(`/home/recommended/${place.PLACE_KEY}/reviews`);
@@ -19,8 +40,8 @@ const RecommedCard = ({ place, order }) => {
     router.push(`/home/recommended/${place.PLACE_KEY}/info`);
   };
   const onClickMoveMap = () => {
-    const lat = place.latitude;
-    const lon = place.longitude;
+    const lat = latitude;
+    const lon = longitude;
 
     // Zustand를 사용하여 위도와 경도 상태를 업데이트
     setCoordinates(lat, lon);
