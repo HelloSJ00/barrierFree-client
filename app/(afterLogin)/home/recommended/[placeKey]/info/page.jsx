@@ -8,6 +8,7 @@ import Bookmark from "../../../_components/Bookmark";
 import { useParams, useRouter, useSearchParams } from "next/navigation"; // useSearchParams 추가
 import { useQuery } from "@tanstack/react-query";
 import { getInfoDetails } from "./_api/getInfoDetail";
+import Rechart from "./_components/rechart/Rechart";
 const Info = () => {
   const router = useRouter();
   const params = useParams();
@@ -20,9 +21,9 @@ const Info = () => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["info", placeKey],
     queryFn: getInfoDetails,
-    enabled: placeKey !== null && placeKey !== undefined, // placeKey 유효할 때만 쿼리 실행
-    staleTime: 60 * 1000, // 밀리초 단위
-    gcTime: 300 * 1000,
+    enabled: !!placeKey, // placeKey가 유효할 때만 쿼리 실행
+    staleTime: 60 * 1000, // 1분 동안 데이터가 신선하게 유지
+    cacheTime: 300 * 1000, // 5분 동안 캐시 유지
   });
 
   const closeModal = () => {
@@ -47,16 +48,20 @@ const Info = () => {
     <ModalBackground>
       <motion.div
         className={styles.modal}
-        initial={{ scale: 0.5, opacity: 0 }} // 모달 초기 크기와 투명도
-        animate={{ scale: 1, opacity: 1 }} // 모달이 커지는 애니메이션
-        exit={{ scale: 0.5, opacity: 0 }} // 모달이 닫힐 때 애니메이션
-        transition={{ duration: 0.3 }} // 애니메이션 지속 시간
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.5, opacity: 0 }}
+        transition={{ duration: 0.3 }}
       >
         <div className={styles.modalHeader}>
           <CloseButton onClickBtn={closeModal} />
+          <span>{data?.AREA_NM}</span>
           <Bookmark placeKey={placeKey} mine={isBookmarked} />
         </div>
-        <div className={styles.modalBody}></div>
+        <div className={styles.modalBody}>
+          <div> 실시간 현황</div>
+          {isLoading ? <div>Loading...</div> : <Rechart apiResponse={data} />}
+        </div>
       </motion.div>
     </ModalBackground>
   );

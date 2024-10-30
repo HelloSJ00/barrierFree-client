@@ -1,8 +1,8 @@
-export async function getInfoDetails() {
+export async function getInfoDetails({ queryKey }) {
   const [_1, placeKey] = queryKey; // queryKey에서 placeId 추출
-
+  console.log("getInfoDetails", placeKey);
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/place/details?placeKey=${placeKey}`,
+    `${process.env.NEXT_PUBLIC_SECOND_AI_URL}/place_detail/${placeKey}`,
     {
       method: "GET",
       crudential: true,
@@ -12,7 +12,9 @@ export async function getInfoDetails() {
   if (!response.ok) {
     throw new Error("Failed to Fetch");
   }
+  // console.log(response);
 
-  const data = response.json();
-  return data.data;
+  const data = await response.json();
+  console.log(data);
+  return data;
 }

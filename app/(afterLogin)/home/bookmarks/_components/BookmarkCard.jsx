@@ -48,8 +48,8 @@ const BookmarkCard = ({ place, order }) => {
       <section className={styles.scoreSection}>
         <div className={styles.chartBox}>
           <CircularProgressbar
-            value={place.REC_SCORE}
-            text={`${place.REC_SCORE}점`}
+            value={"추천지수"}
+            text={`--점`}
             styles={buildStyles({
               pathColor: "#388e3c", // 고정된 색상
               textColor: "#388e3c",
